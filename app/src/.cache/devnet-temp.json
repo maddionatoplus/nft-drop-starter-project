@@ -1,0 +1,31 @@
+{
+    "program": {
+        "uuid": "4Uzmu9",
+        "candyMachine": "4Uzmu9BaqKGnbXAxhRYeoyh3c7KWkDfKDyRQvs59ovgR"
+    },
+    "items": {
+        "0": {
+            "link": "https://arweave.net/pP36A5Xsuw9LGtI_zxYa95fw8EQxLTYUMOzlup1U2ec",
+            "imageLink": "https://arweave.net/R9qnVbKPU0vxQeyEyGwil3Yc6DOqimSXAaSwCFwHy5Y?ext=png",
+            "name": "Number #0001",
+            "onChain": true,
+            "verifyRun": true
+        },
+        "1": {
+            "link": "https://arweave.net/ITaMLP6_ku3S2LYlql1for_G4bqmEEjQpf846rT0PEY",
+            "imageLink": "https://arweave.net/91T_yIc8jP3sZJ-h0Lk54ozNQF1gQX484pR1rEjKujI?ext=png",
+            "name": "Number #0002",
+            "onChain": true,
+            "verifyRun": true
+        },
+        "2": {
+            "link": "https://arweave.net/DoflOour7iSi16Yxb0Xkvh-40Ar3QfaBkKlwbDVdczo",
+            "imageLink": "https://arweave.net/RZJfLKX4AObNy7Zx5Bz7xAKXEfgzvadfxtKTrLxnq-k?ext=png",
+            "name": "Number #0003",
+            "onChain": true,
+            "verifyRun": true
+        }
+    },
+    "env": "devnet",
+    "cacheName": "temp"
+}

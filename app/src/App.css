@@ -1,6 +1,6 @@
 .App {
   height: 100vh;
-  background-color: #3F7EAA;
+  background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
   overflow: scroll;
   text-align: center;
   overflow: hidden;
@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 0 30px 0 30px;
-  color: white;
+  color: black;
   position: relative;
   /* background-color: #35aee2; */
 }
@@ -24,8 +24,9 @@
   padding: 30px;
 }
 
-.header-container {
-  /* background-color: #60c657; */
+.header-container { 
+  margin-top: 50px;
+  color: #2e2e2e;
 }
 
 .header {
@@ -59,7 +60,7 @@
 
 .connect-wallet-button {
   color: white;
-  background: -webkit-linear-gradient(left, #ff8867, #ff52ff);
+  background: -webkit-linear-gradient(left, #9567ff, #52ffe2);
   background-size: 200% 200%;
   animation: gradient-animation 4s ease infinite;
 }
@@ -90,7 +91,7 @@
 .footer-text {
   font-size: 16px;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 
 .connected-container input[type='text'] {
@@ -143,4 +144,32 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  justify-items: center;
+  margin: 0;
+  padding: 0;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: rgb(240, 239, 239);
+}
+
+.nft-grid .nft-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-self: center;
+  align-self: center;
+}
+
+.nft-item img {
+  width: 500px;
+  height: 500px;
+  border-radius: 10px;
+  object-fit: cover;
 }

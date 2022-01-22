@@ -87,7 +87,7 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header">🍭 Candy Drop</p>
+          <p className="header">NFT ARTE ITALIA</p>
           <a
             className="footer-text"
             href={TOPLUS_LINK}
@@ -95,7 +95,8 @@ const App = () => {
             rel="noreferrer"> 
             <img alt="Toplus logo" className="toplus-logo" src={toplusLogo} /> 
           </a>
-          <p className="sub-text">NFT drop machine with fair mint</p>
+          <p className="sub-text">Ottieni NFT sui monumenti italiani!</p>
+          <p className="sub-text">La prima città è <b>Brescia</b></p>
           {!walletAddress && renderNotConnectedContainer()}
         </div>
         {/* Check for walletAddress and then pass in walletAddress */}

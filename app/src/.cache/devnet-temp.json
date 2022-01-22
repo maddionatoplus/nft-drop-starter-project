@@ -1,29 +1,26 @@
 {
     "program": {
-        "uuid": "4Uzmu9",
-        "candyMachine": "4Uzmu9BaqKGnbXAxhRYeoyh3c7KWkDfKDyRQvs59ovgR"
+        "uuid": "4qtUT2",
+        "candyMachine": "4qtUT24A6QVHAcW7hkTvbmL3MMuW8J6EYcKRpvZLgpTt"
     },
     "items": {
         "0": {
-            "link": "https://arweave.net/pP36A5Xsuw9LGtI_zxYa95fw8EQxLTYUMOzlup1U2ec",
-            "imageLink": "https://arweave.net/R9qnVbKPU0vxQeyEyGwil3Yc6DOqimSXAaSwCFwHy5Y?ext=png",
+            "link": "https://arweave.net/0tp2CI3aUkbgfH3IVzH504dDd703qdkFEmJeVYeaFzg",
+            "imageLink": "https://arweave.net/ZzLy0W7BcPANROFgWnhLw63m8lOksUz_TZep3PCoOMA?ext=png",
             "name": "Number #0001",
-            "onChain": true,
-            "verifyRun": true
+            "onChain": true
         },
         "1": {
-            "link": "https://arweave.net/ITaMLP6_ku3S2LYlql1for_G4bqmEEjQpf846rT0PEY",
-            "imageLink": "https://arweave.net/91T_yIc8jP3sZJ-h0Lk54ozNQF1gQX484pR1rEjKujI?ext=png",
+            "link": "https://arweave.net/OdZkVCPY5Do2L-EbXqGRpv0crZybUjdWRstqnhriSSo",
+            "imageLink": "https://arweave.net/o5NtNF9E0qjM-co8tHR9iqjWjfyStBJBSxrothOMdCw?ext=png",
             "name": "Number #0002",
-            "onChain": true,
-            "verifyRun": true
+            "onChain": true
         },
         "2": {
-            "link": "https://arweave.net/DoflOour7iSi16Yxb0Xkvh-40Ar3QfaBkKlwbDVdczo",
-            "imageLink": "https://arweave.net/RZJfLKX4AObNy7Zx5Bz7xAKXEfgzvadfxtKTrLxnq-k?ext=png",
+            "link": "https://arweave.net/4sW5ISNIfp6Kg-tUSZWVHR6qY1NTg7mIaMGZwDKknTk",
+            "imageLink": "https://arweave.net/xrc7lzAKkrhqD00LXjTv4SJ1vGWgZXzpzBs5OOZuePI?ext=png",
             "name": "Number #0003",
-            "onChain": true,
-            "verifyRun": true
+            "onChain": true
         }
     },
     "env": "devnet",

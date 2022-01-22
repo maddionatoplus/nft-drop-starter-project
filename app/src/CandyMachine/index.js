@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Connection, PublicKey } from '@solana/web3.js';
+import { Connection,  PublicKey } from '@solana/web3.js';
 import { Program, Provider, web3 } from '@project-serum/anchor';
 import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
-import { sendTransactions } from './connection';
-import { programs } from '@metaplex/js';
+import { sendTransactions } from './connection'; 
 import CountdownTimer from '../CountdownTimer';
 import './CandyMachine.css';
+import bs58 from 'bs58';
+import nftData from './../.cache/devnet-temp.json';
 
 import {
   candyMachineProgram,
@@ -16,15 +17,13 @@ import {
   getNetworkToken,
   CIVIC
 } from './helpers';
-import { rpc } from '@project-serum/anchor/dist/cjs/utils';
 
 const { SystemProgram } = web3;
 const opts = {
   preflightCommitment: 'processed',
 }; 
 const CandyMachine = ({ walletAddress  }) => {
-  const [candyMachine, setCandyMachine] = useState(null);// State
-  const [machineStats, setMachineStats] = useState(null);
+  const [candyMachine, setCandyMachine] = useState(null);// State 
   const [mints, setMints] = useState([]); 
   const [isMinting, setIsMinting] = useState(false);
   const [isLoadingMints, setIsLoadingMints] = useState(false);
@@ -393,6 +392,14 @@ const CandyMachine = ({ walletAddress  }) => {
       },
     });
 
+    var mintedItems = []; 
+
+    for(var i = 0; i < itemsRedeemed; i++){
+      mintedItems.push(nftData.items[i]);
+    }
+
+    setMints(mintedItems);
+
     console.log({
       itemsAvailable,
       itemsRedeemed,
@@ -401,11 +408,63 @@ const CandyMachine = ({ walletAddress  }) => {
       goLiveDateTimeString,
       presale,
     });
+
+    // var mintAddresses = await getMintAddresses(candyMachine.data.creators[0].address, candyMachine);
+
   };
 
   const renderMintedItems = () => {
-    return <p>Items LIST SOON</p>
+    console.log(mints); 
+    return <div className='gif-grid'> {
+                  (mints.map(item => {
+                        return <div className="gif-item" key={item.name}>
+                                  <img src={item.imageLink} alt={item.name} ></img>
+                                </div>
+                      }))
+                  }
+          </div>
   }
+ 
+  const MAX_NAME_LENGTH = 32;
+  const MAX_URI_LENGTH = 200;
+  const MAX_SYMBOL_LENGTH = 10;
+  const MAX_CREATOR_LEN = 32 + 1 + 1;
+  const MAX_CREATOR_LIMIT = 5;
+  const MAX_DATA_SIZE = 4 + MAX_NAME_LENGTH + 4 + MAX_SYMBOL_LENGTH + 4 + MAX_URI_LENGTH + 2 + 1 + 4 + MAX_CREATOR_LIMIT * MAX_CREATOR_LEN;
+  const MAX_METADATA_LEN = 1 + 32 + 32 + MAX_DATA_SIZE + 1 + 1 + 9 + 172;
+  const CREATOR_ARRAY_START = 1 + 32 + 32 + 4 + MAX_NAME_LENGTH + 4 + MAX_URI_LENGTH + 4 + MAX_SYMBOL_LENGTH + 2 + 1 + 4;
+ 
+/*
+  const getMintAddresses = async (firstCreatorAddress) => {
+    const provider = getProvider(); 
+    const metadataAccounts = await provider.connection.getProgramAccounts(
+        TOKEN_METADATA_PROGRAM_ID,
+        {
+          // The mint address is located at byte 33 and lasts for 32 bytes.
+          dataSlice: { offset: 33, length: 32 },
+
+          filters: [
+            // Only get Metadata accounts.
+            { dataSize: MAX_METADATA_LEN },
+
+            // Filter using the first creator.
+            {
+              memcmp: {
+                offset: CREATOR_ARRAY_START,
+                bytes: firstCreatorAddress.toBase58(),
+              },
+            },
+          ],
+        },
+    );
+
+  console.log(metadataAccounts)
+
+  return metadataAccounts.map((metadataAccountInfo) => (
+      bs58.encode(metadataAccountInfo.account.data)
+  ));
+};
+*/
 
   // Create render function
   const renderDropTimer = () => {
@@ -421,7 +480,7 @@ const CandyMachine = ({ walletAddress  }) => {
     }
 
     // Else let's just return the current drop date
-    return <p>{`Drop Date: ${candyMachine.state.goLiveDateTimeString}`}</p>;
+    return <p><b>{`Drop Date:`}</b><br/>{`${candyMachine.state.goLiveDateTimeString}`}</p>;
   };
 
 
@@ -429,7 +488,7 @@ const CandyMachine = ({ walletAddress  }) => {
     <div className="machine-container">
       {/* Add this at the beginning of our component */}
       {renderDropTimer()}
-      <p>{`Items Minted: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
+      <p>{`NFT MINTATI: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
       {candyMachine.state.itemsRedeemed === candyMachine.state.itemsAvailable ? (
           <p className="sub-text">Sold Out 🙊</p>
         ) : (<button className="cta-button mint-button"
@@ -439,7 +498,7 @@ const CandyMachine = ({ walletAddress  }) => {
             </button>
       )}
       {isLoadingMints && <p>LOADING MINTS...</p>}
-      {mints.length > 0 && renderMintedItems()}
+      {mints.length > 0 && renderMintedItems()} 
     </div>
   );
 };

@@ -10,10 +10,9 @@
 
 .gif-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 1.5rem;
-  justify-items: center;
-  margin: 0;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-gap: 2.5rem;
+  justify-items: center; 
   padding: 20px 0 20px 0;
 }
 
@@ -23,6 +22,11 @@
   position: relative;
   justify-self: center;
   align-self: center;
+}
+
+.gif-item{
+  margin-top:50px;
+  margin-bottom:50px; 
 }
 
 .gif-item img {

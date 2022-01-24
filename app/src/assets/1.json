@@ -1,7 +1,7 @@
 {
-    "name": "Number #0002",
+    "name": "Capitolium - Silver",
     "symbol": "NB",
-    "description": "Collection of 3 numbers on the blockchain. This is the number 2/3.",
+    "description": "Collection of 5 monuments of Brescia - Italy. This is the 2/10.",
     "seller_fee_basis_points": 500,
     "image": "1.png",
     "attributes": [
@@ -11,8 +11,8 @@
         {"trait_type": "Layer-4", "value": "2"}
     ],
     "properties": {
-        "creators": [{"address": "6j4nNrozTJkk1zatiXHezSLZArnRUq3WkGKHACThXGpZ", "share": 100}],
+        "creators": [{"address": "A6ZMMWnMkENd91DoBwP2JoFcNUKCHt632NeRa3Rxbsjc", "share": 100}],
         "files": [{"uri": "1.png", "type": "image/png"}]
     },
-    "collection": {"name": "numbers", "family": "numbers"}
+    "collection": {"name": "Brescia", "family": "NFT Arte Italia"}
 }

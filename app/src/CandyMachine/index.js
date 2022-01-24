@@ -5,6 +5,7 @@ import { MintLayout, TOKEN_PROGRAM_ID, Token } from '@solana/spl-token';
 import { sendTransactions } from './connection'; 
 import CountdownTimer from '../CountdownTimer';
 import './CandyMachine.css';
+import './../App.css';
 import bs58 from 'bs58';
 import nftData from './../.cache/devnet-temp.json';
 
@@ -290,7 +291,7 @@ const CandyMachine = ({ walletAddress  }) => {
       }),
     );
   
-    setIsMinting(true);
+    setIsMinting(false);
     try {
       return (
         await sendTransactions(
@@ -353,10 +354,11 @@ const CandyMachine = ({ walletAddress  }) => {
       (!candyMachine.data.goLiveDate ||
         candyMachine.data.goLiveDate.toNumber() > new Date().getTime() / 1000);
     
+        
     // We will be using this later in our UI so let's generate this now
     const goLiveDateTimeString = `${new Date(
       goLiveData * 1000
-    ).toGMTString()}` 
+    ).toLocaleString()}` 
     
     // Remove loading flag.
     setIsLoadingMints(false);
@@ -415,11 +417,15 @@ const CandyMachine = ({ walletAddress  }) => {
 
   const renderMintedItems = () => {
     console.log(mints); 
-    return <div className='gif-grid'> {
+    return <div className='section call-action gif-grid'> 
+            {isLoadingMints && <h3 className="wow fadeInUp">Loading...</h3>}
+              { !isLoadingMints &&
                   (mints.map(item => {
                         return <div className="gif-item" key={item.name}>
-                                  <img src={item.imageLink} alt={item.name} ></img>
-                                </div>
+                                  <img src={item.imageLink} alt={item.name}></img>
+                                  <br/>
+                                  <h4 className='wow fadeInUp'>{item.name}</h4>
+                              </div>
                       }))
                   }
           </div>
@@ -473,32 +479,39 @@ const CandyMachine = ({ walletAddress  }) => {
     const dropDate = new Date(candyMachine.state.goLiveData * 1000);
 
     // If currentDate is before dropDate, render our Countdown component
-    if (currentDate < dropDate) {
-      console.log('Before drop date!');
+    if (currentDate < dropDate) { 
       // Don't forget to pass over your dropDate!
       return <CountdownTimer dropDate={dropDate} />;
     }
 
     // Else let's just return the current drop date
-    return <p><b>{`Drop Date:`}</b><br/>{`${candyMachine.state.goLiveDateTimeString}`}</p>;
+    return <h4 className='wow fadeInUp'><b>{`Data di rilascio:`}</b><br/><br/>{`${candyMachine.state.goLiveDateTimeString}`}</h4>;
   };
 
 
   return candyMachine && (
-    <div className="machine-container">
-      {/* Add this at the beginning of our component */}
-      {renderDropTimer()}
-      <p>{`NFT MINTATI: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</p>
-      {candyMachine.state.itemsRedeemed === candyMachine.state.itemsAvailable ? (
-          <p className="sub-text">Sold Out 🙊</p>
-        ) : (<button className="cta-button mint-button"
-              onClick={mintToken} 
-              disabled={isMinting}>
-              Mint NFT
-            </button>
-      )}
-      {isLoadingMints && <p>LOADING MINTS...</p>}
-      {mints.length > 0 && renderMintedItems()} 
+    <div>
+      <div className="features section">
+        {/* Add this at the beginning of our component */}
+        {renderDropTimer()}
+        <br/>
+        <h4 className='wow fadeInUp'>{`NFT generati: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</h4>
+        <br/>
+        <br/>
+        {candyMachine.state.itemsRedeemed === candyMachine.state.itemsAvailable ? (
+          <h4 className="sub-text wow fadeInUp">Sold Out 🙊</h4>
+          ) : (<button className="mint-button cta-button"
+          onClick={ async () =>  {
+              await mintToken();
+              await getCandyMachineState();
+            }
+          } 
+          disabled={isMinting}>
+                Ottieni il tuo NFT
+              </button>
+        )}
+      </div>
+      {mints.length > 0 &&  renderMintedItems()} 
     </div>
   );
 };

@@ -86,8 +86,8 @@ const App = () => {
   return (
     <div className="App">
       <div className="container">
-        <div className="header-container">
-          <p className="header">NFT ARTE ITALIA</p>
+        <div className="hero-area">
+          <h1>NFT Arte Italia</h1>
           <a
             className="footer-text"
             href={TOPLUS_LINK}
@@ -95,20 +95,26 @@ const App = () => {
             rel="noreferrer"> 
             <img alt="Toplus logo" className="toplus-logo" src={toplusLogo} /> 
           </a>
-          <p className="sub-text">Ottieni NFT sui monumenti italiani!</p>
-          <p className="sub-text">La prima città è <b>Brescia</b></p>
+          <h2 className="wow fadeInUp">Ottieni NFT sui monumenti italiani!</h2>
+          <br/>
+          <br/>
+          <h3 className="wow fadeInUp">Il primo rilascio è su:</h3>
+          <br/>
+          <h4 className="wow fadeInUp"><b>Brescia</b></h4>
+          <br/>
+          <br/>
           {!walletAddress && renderNotConnectedContainer()}
         </div>
         {/* Check for walletAddress and then pass in walletAddress */}
         {walletAddress && <CandyMachine walletAddress={window.solana} />}
-        <div className="footer-container">
+        <div className="footer">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
           <a
             className="footer-text"
             href={TWITTER_LINK}
             target="_blank"
             rel="noreferrer"
-          >{`built on @${TWITTER_HANDLE}`}</a>
+          >{`built by @${TWITTER_HANDLE}`}</a>
         </div>
       </div>
     </div>

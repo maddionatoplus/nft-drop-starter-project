@@ -1,9 +1,9 @@
 {
-    "name": "Duomo - Gold",
+    "name": "Capitolium - Gold",
     "symbol": "NB",
-    "description": "Collection of 5 monuments of Brescia - Italy. This is the 1/10.",
+    "description": "Collection of 5 monuments of Brescia - Italy. This is the 8/10.",
     "seller_fee_basis_points": 500,
-    "image": "0.png",
+    "image": "7.png",
     "attributes": [
         {"trait_type": "Layer-1", "value": "0"},
         {"trait_type": "Layer-2", "value": "0"}, 
@@ -12,7 +12,7 @@
     ],
     "properties": {
         "creators": [{"address": "A6ZMMWnMkENd91DoBwP2JoFcNUKCHt632NeRa3Rxbsjc", "share": 100}],
-        "files": [{"uri": "0.png", "type": "image/png"}]
+        "files": [{"uri": "7.png", "type": "image/png"}]
     },
     "collection": {"name": "Brescia", "family": "NFT Arte Italia"}
 }

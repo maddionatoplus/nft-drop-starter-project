@@ -2,12 +2,14 @@ import { React, useEffect, useState } from 'react';
 import './App.css';
 import twitterLogo from './assets/twitter-logo.svg';
 import toplusLogo from './assets/other/toplus_logo.png';
+import solanaLogo from './assets/other/solanaLogo.png';
 import CandyMachine from './CandyMachine';
 
 // Constants
 const TWITTER_HANDLE = 'ItToplus';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 const TOPLUS_LINK = `https://www.toplus.it`; 
+const SOLANA_LINK = `https://solana.com/`; 
 
 
 const App = () => {
@@ -37,7 +39,7 @@ const App = () => {
           setWalletAddress(response.publicKey.toString());
         }
       } else {
-        alert('Solana object not found! Get a Phantom Wallet 👻');
+        alert('Crea il tuo wallet Phantom per potere accedere! 👻');
       }
     } catch (error) {
       console.error(error);
@@ -49,11 +51,14 @@ const App = () => {
    */
   const connectWallet = async () => {
     const { solana } = window;
-  
+
     if (solana) {
       const response = await solana.connect();
       console.log('Connected with Public Key:', response.publicKey.toString());
       setWalletAddress(response.publicKey.toString());
+    }
+    else {
+      alert('Crea il tuo wallet Phantom per potere accedere! 👻');
     }
   };
 
@@ -87,13 +92,17 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="hero-area">
-          <h1>NFT Arte Italia</h1>
+          <h1>NFT Arte Italia <img
+            src="https://flagcdn.com/w80/it.png"
+            srcset="https://flagcdn.com/w160/it.png 2x"
+            width="60"
+            alt="Italy"/></h1> 
           <a
             className="footer-text"
             href={TOPLUS_LINK}
             target="_blank"
             rel="noreferrer"> 
-            <img alt="Toplus logo" className="toplus-logo" src={toplusLogo} /> 
+            <img alt="Toplus" className="toplus-logo" src={toplusLogo} /> 
           </a>
           <h2 className="wow fadeInUp">Ottieni NFT sui monumenti italiani!</h2>
           <br/>
@@ -115,6 +124,13 @@ const App = () => {
             target="_blank"
             rel="noreferrer"
           >{`built by @${TWITTER_HANDLE}`}</a>
+          <a
+            className="footer-text"
+            href={SOLANA_LINK}
+            target="_blank"
+            rel="noreferrer"> 
+            <img alt="Solana" width="200px" src={solanaLogo} /> 
+          </a>
         </div>
       </div>
     </div>

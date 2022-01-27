@@ -358,7 +358,7 @@ const CandyMachine = ({ walletAddress  }) => {
     // We will be using this later in our UI so let's generate this now
     const goLiveDateTimeString = `${new Date(
       goLiveData * 1000
-    ).toLocaleString()}` 
+    ).toLocaleString('it-IT')} UTC` 
     
     // Remove loading flag.
     setIsLoadingMints(false);

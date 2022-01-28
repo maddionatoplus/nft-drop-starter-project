@@ -320,7 +320,7 @@ const CandyMachine = ({ walletAddress }) => {
 
   const getProvider = () => {
     const rpcHost = process.env.REACT_APP_SOLANA_RPC_HOST;
-   // console.log(rpcHost);
+    // console.log(rpcHost);
     // Create a new connection object
     const connection = new Connection(rpcHost);
 
@@ -409,7 +409,7 @@ const CandyMachine = ({ walletAddress }) => {
     }
 
     setNfts(nftItems);
-/*
+    /*
     console.log({
       itemsAvailable,
       itemsRedeemed,
@@ -422,7 +422,7 @@ const CandyMachine = ({ walletAddress }) => {
     // var mintAddresses = await getMintAddresses(candyMachine.data.creators[0].address, candyMachine);
   };
 
-  const renderMintedItems = () => { 
+  const renderMintedItems = () => {
     return (
       <div className="section call-action">
         <h2>NFT - Brescia</h2>
@@ -506,11 +506,11 @@ const CandyMachine = ({ walletAddress }) => {
 };
 */
 
-  // Create render function
-  const renderDropTimer = () => {
-    // Get the current date and dropDate in a JavaScript Date object
+// Create render function
+const renderDropTimer = () => {
     const currentDate = new Date();
     const dropDate = new Date(candyMachine.state.goLiveData * 1000);
+    // Get the current date and dropDate in a JavaScript Date object
 
     // If currentDate is before dropDate, render our Countdown component
     if (currentDate < dropDate) {
@@ -539,10 +539,12 @@ const CandyMachine = ({ walletAddress }) => {
           <h4 className="wow fadeInUp">{`NFT generati: ${candyMachine.state.itemsRedeemed} / ${candyMachine.state.itemsAvailable}`}</h4>
           <br />
           <br />
-          {candyMachine.state.itemsRedeemed ===
+          {
+          
+          candyMachine.state.itemsRedeemed ===
           candyMachine.state.itemsAvailable ? (
             <h4 className="sub-text wow fadeInUp">Sold Out 🙊</h4>
-          ) : (
+          ) : new Date() > new Date(candyMachine.state.goLiveData * 1000) ? (
             <button
               className="mint-button cta-button"
               onClick={async () => {
@@ -553,6 +555,8 @@ const CandyMachine = ({ walletAddress }) => {
             >
               Ottieni il tuo NFT
             </button>
+          ) : (
+            <p></p>
           )}
         </div>
         {nfts.length > 0 && renderMintedItems()}

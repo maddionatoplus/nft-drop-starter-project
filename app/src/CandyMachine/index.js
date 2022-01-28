@@ -320,7 +320,7 @@ const CandyMachine = ({ walletAddress }) => {
 
   const getProvider = () => {
     const rpcHost = process.env.REACT_APP_SOLANA_RPC_HOST;
-    console.log(rpcHost);
+   // console.log(rpcHost);
     // Create a new connection object
     const connection = new Connection(rpcHost);
 
@@ -409,7 +409,7 @@ const CandyMachine = ({ walletAddress }) => {
     }
 
     setNfts(nftItems);
-
+/*
     console.log({
       itemsAvailable,
       itemsRedeemed,
@@ -418,12 +418,11 @@ const CandyMachine = ({ walletAddress }) => {
       goLiveDateTimeString,
       presale,
     });
-
+*/
     // var mintAddresses = await getMintAddresses(candyMachine.data.creators[0].address, candyMachine);
   };
 
-  const renderMintedItems = () => {
-    console.log(nfts);
+  const renderMintedItems = () => { 
     return (
       <div className="section call-action">
         <h2>NFT - Brescia</h2>

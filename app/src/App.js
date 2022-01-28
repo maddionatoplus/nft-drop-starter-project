@@ -39,7 +39,7 @@ const App = () => {
           setWalletAddress(response.publicKey.toString());
         }
       } else {
-        alert('Crea il tuo wallet Phantom per potere accedere! 👻');
+        alert('Scarica il wallet Phantom per potere accedere! 👻');
       }
     } catch (error) {
       console.error(error);
@@ -58,7 +58,7 @@ const App = () => {
       setWalletAddress(response.publicKey.toString());
     }
     else {
-      alert('Crea il tuo wallet Phantom per potere accedere! 👻');
+      alert('Scarica il wallet Phantom per potere accedere! 👻');
     }
   };
 
@@ -102,7 +102,7 @@ const App = () => {
             href={TOPLUS_LINK}
             target="_blank"
             rel="noreferrer"> 
-            <img alt="Toplus" className="toplus-logo" src={toplusLogo} /> 
+            <img alt="Toplus" className="toplus-logo" width="150px" src={toplusLogo} /> 
           </a>
           <h2 className="wow fadeInUp">Ottieni NFT sui monumenti italiani!</h2>
           <br/>
